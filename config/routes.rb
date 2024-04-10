@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
-  # route to test your configuration
-  get "/hello", to: "application#hello_world"
+  
+  post "/signup", to: "user#create"
+  
+  post "/login", to: "auth#login"
+  get "/me", to: "auth#auto_login"
+
+  delete "/logout", to: "sessions#destroy"
 
   get '*path',
       to: 'fallback#index',
