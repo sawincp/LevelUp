@@ -1,21 +1,34 @@
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
+import axios from 'axios'
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [currentUser, setCurrentUser] = useState([]);
 
-  useEffect(() => {
-    fetch("/hello")
-      .then((r) => r.json())
-      .then((data) => setCount(data.count));
-  }, []);
+  useEffect(()=>{
+    axios.get('/me')
+    .then(r =>{
+      setCurrentUser(r.data)
+    })
+    .catch(error =>{
+      console.error(error)
+    })
+  },[])
+
+  
 
   return (
-    <div className="App">
-      <Routes>
-        <Route exact path= "/testing" element={<h1>Test Route</h1>}/>
-        <Route exact path="/" element= {<h1>Page Count: {count}</h1>}/>
-      </Routes>
+    <div>
+      {currentUser ? (
+        <>
+          <NavBar />
+          <Routes>
+            <Route exact path='/' element={<Profile />} />
+          </Routes>
+        </>
+      ) : (
+        <Login />
+      )}
     </div>
   );
 }
