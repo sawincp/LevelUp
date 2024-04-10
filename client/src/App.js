@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+// import { Routes, Route } from "react-router-dom";
 import axios from 'axios'
+
+import Login from "./components/Login";
 
 function App() {
   const [currentUser, setCurrentUser] = useState([]);
@@ -15,20 +17,13 @@ function App() {
     })
   },[])
 
+  // console.log('CurrentUser:', currentUser)
+
   
 
   return (
     <div>
-      {currentUser ? (
-        <>
-          <NavBar />
-          <Routes>
-            <Route exact path='/' element={<Profile />} />
-          </Routes>
-        </>
-      ) : (
-        <Login />
-      )}
+      {currentUser ? (<Login />) : <h1>App</h1>}
     </div>
   );
 }
