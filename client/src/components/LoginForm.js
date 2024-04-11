@@ -20,7 +20,7 @@ function LoginForm() {const [validated, setValidated]= useState(false)
 
 return (
   <>
-    <Container className="d-flex align-items-center justify-content-center">
+    <Container className="d-flex align-items-center justify-content-center h-50">
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
         <h1>Log In</h1>
         <Row className="mb-3">
