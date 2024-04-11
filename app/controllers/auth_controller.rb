@@ -18,6 +18,7 @@ class AuthController < ApplicationController
             render json: session_user
         else
             render json: {errors: "Must Log In"}
+        end
     end
 
     def logged_in?

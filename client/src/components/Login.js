@@ -1,4 +1,5 @@
 import React,{ useState } from 'react'
+import Button from "react-bootstrap/Button"
 import LoginForm from './LoginForm'
 import SignupForm from './SignupForm'
 
@@ -9,27 +10,23 @@ function Login() {
     <div>
     {showLogin ? (
       <>
-      <h1>Log In</h1>
       <LoginForm  />
-      <hr></hr>
       <p>
         Don't have an account?
       </p>
-      <button onClick ={()=> setShowLogin(false)}>
+      <Button onClick ={()=> setShowLogin(false)}>
           Sign Up!
-        </button>
+        </Button>
       </>
     ) : (
       <>
-      <h1>Sign Up</h1>
       <SignupForm />
-      <hr></hr>
       <p>
         Already have an account?
       </p>
-      <button onClick={()=> setShowLogin(true)}>
+      <Button onClick={()=> setShowLogin(true)}>
           Log In!
-        </button>
+        </Button>
       </>
     )}
   </div>

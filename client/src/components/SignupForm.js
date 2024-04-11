@@ -1,18 +1,54 @@
-import React from 'react'
-import FloatingLabel from 'react-bootstrap/FloatingLabel';
-import Form from 'react-bootstrap/Form';
+import React, { useState } from "react";
+import Container from "react-bootstrap/Container";
+import Form from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button"
+import InputGroup from "react-bootstrap/InputGroup"
 
 function SignupForm() {
+    const [validated, setValidated]= useState(false)
+
+    const handleSubmit = (e)=>{
+        const form = e.currentTarget
+        if(form.checkValidity() === false){
+            e.preventDefault()
+            e.stopPropagation()
+        }
+        setValidated(true)
+    }
+
+
   return (
     <>
-    <FloatingLabel controlId='floatingInput'label = "Username"className='mb-3' >
-        <Form.Control type='email' placeholder='name@example.com' />
-    </FloatingLabel>
-    <FloatingLabel controlId='floatingPassword' label='Password' >
-        <Form.Control type='password' placeholder='Password' />
-    </FloatingLabel>
+      <Container className="d-flex align-items-center justify-content-center">
+        <Form noValidate validated={validated} onSubmit={handleSubmit}>
+          <h1>Sign Up</h1>
+          <Row className="mb-3">
+            <Form.Group as={Col} md="12" controlId="validationCustomUsername">
+              <InputGroup>
+                <Form.Control type="text" placeholder="Username" required />
+                <Form.Control.Feedback type="invalid">
+                  Please Enter A Username.
+                </Form.Control.Feedback>
+              </InputGroup>
+            </Form.Group>
+          </Row>
+          <Row className="mb-3">
+            <Form.Group as={Col} md="12" controlId="validationCustomPassword">
+              <InputGroup>
+                <Form.Control type="password" placeholder="Password" required />
+                <Form.Control.Feedback type="invalid">
+                  Please Enter A Password.
+                </Form.Control.Feedback>
+              </InputGroup>
+            </Form.Group>
+          </Row>
+          <Button type="submit">Sign Up</Button>
+        </Form>
+      </Container>
     </>
-  )
+  );
 }
 
 export default SignupForm
