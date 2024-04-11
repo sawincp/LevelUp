@@ -3,21 +3,22 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button"
-import InputGroup from "react-bootstrap/InputGroup"
+import Button from "react-bootstrap/Button";
+import InputGroup from "react-bootstrap/InputGroup";
 
 function SignupForm() {
-    const [validated, setValidated]= useState(false)
+  
+  const [currentUser, setCurrentUser] = useState();
+  const [validated, setValidated] = useState(false);
 
-    const handleSubmit = (e)=>{
-        const form = e.currentTarget
-        if(form.checkValidity() === false){
-            e.preventDefault()
-            e.stopPropagation()
-        }
-        setValidated(true)
+  const handleSubmit = (e) => {
+    const form = e.currentTarget;
+    if (form.checkValidity() === false) {
+      e.preventDefault();
+      e.stopPropagation();
     }
-
+    setValidated(true);
+  };
 
   return (
     <>
@@ -51,4 +52,4 @@ function SignupForm() {
   );
 }
 
-export default SignupForm
+export default SignupForm;

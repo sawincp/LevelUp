@@ -1,18 +1,21 @@
-import React from 'react';
-import {createRoot} from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import { createRoot } from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import { RecoilRoot } from "recoil";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
 
-const domNode = document.getElementById('root');
+const domNode = document.getElementById("root");
 const root = createRoot(domNode);
 
 root.render(
   <React.StrictMode>
     <BrowserRouter>
+      <RecoilRoot>
         <App />
+      </RecoilRoot>
     </BrowserRouter>
   </React.StrictMode>
 );
