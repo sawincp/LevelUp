@@ -26,8 +26,7 @@ class AuthController < ApplicationController
 
 
     def logout
-      
+      render json: {message: "Logged out successfully"}
     end
-
 
   end
