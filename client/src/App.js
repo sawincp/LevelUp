@@ -1,29 +1,29 @@
 import { useState, useEffect } from "react";
-// import { Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import axios from 'axios'
+import {useRecoilState} from 'recoil'
+import {userState} from './state/atoms/UserState'
 
 import Login from "./components/Login";
+import Nav from './components/Nav'
+import Profile from './components/Profile'
 
 function App() {
-  const [currentUser, setCurrentUser] = useState([]);
 
-  useEffect(()=>{
-    axios.get('/me')
-    .then(r =>{
-      setCurrentUser(r.data)
-    })
-    .catch(error =>{
-      console.error(error)
-    })
-  },[])
+  const [currentUser, setCurrentUser] = useRecoilState(userState)
 
-  // console.log('CurrentUser:', currentUser)
+  console.log("Current User:", currentUser)
 
   
-
   return (
     <div>
-      {currentUser ? (<Login />) : <h1>App</h1>}
+      {currentUser ? (
+        <>
+        <Profile />
+        </>
+      ) : (
+        <Login />
+      )}
     </div>
   );
 }
