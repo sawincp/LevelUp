@@ -18,6 +18,8 @@ function SignupForm() {
     password: "",
   });
 
+  const [error, setError] = useState("");
+
   const handleInputChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
@@ -32,18 +34,23 @@ function SignupForm() {
       return;
     }
     try {
-      const response = await axios.post("/users", { user }, {
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json"
+      const response = await axios.post(
+        "/users",
+        { user },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
         }
-      });
-      const data = response.data; // Axios automatically parses JSON response
+      );
+      const data = response.data;
       localStorage.setItem("token", data.jwt);
       setCurrentUser(data.user);
     } catch (error) {
-      console.error("Error:", error);
-      // Handle error if signup fails, e.g., display error message to the user
+      const errorMessage = error.response.data.errors[0];
+      console.error("Error:", errorMessage);
+      setError(errorMessage);
     }
   };
 
@@ -68,6 +75,7 @@ function SignupForm() {
               </InputGroup>
             </Form.Group>
           </Row>
+          <p style={{ color: "red", fontWeight: "bold" }}>{error}</p>
           <Row className="mb-3">
             <Form.Group as={Col} md="12" controlId="validationCustomPassword">
               <InputGroup>

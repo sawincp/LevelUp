@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import axios from 'axios'
 import {useRecoilState} from 'recoil'
@@ -12,7 +12,24 @@ function App() {
 
   const [currentUser, setCurrentUser] = useRecoilState(userState)
 
-  console.log("Current User:", currentUser)
+  console.log("User:", currentUser)
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      axios.get('/auto_login', {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      .then(response => {
+        setCurrentUser(response.data);
+      })
+      .catch(error => {
+        console.error('Error during auto-login:', error);
+      });
+    }
+  }, []);
 
   
   return (
