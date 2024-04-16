@@ -8,8 +8,10 @@ function Login() {
   
   const [showLogin, setShowLogin] = useState(true);
 
+  
+
   return (
-    <Container style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
+    <Container style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '50vh' }}>
       {showLogin ? (
         <>
           <LoginForm />

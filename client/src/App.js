@@ -4,9 +4,11 @@ import axios from 'axios'
 import {useRecoilState} from 'recoil'
 import {userState} from './state/atoms/UserState'
 
+import Header from './components/Header'
 import Login from "./components/Login";
-import Nav from './components/Nav'
 import Profile from './components/Profile'
+
+import Container from "react-bootstrap/esm/Container";
 
 function App() {
 
@@ -33,14 +35,17 @@ function App() {
 
   
   return (
-    <div>
-      {currentUser ? (
-        <>
-        <Profile />
-        </>
-      ) : (
-        <Login />
-      )}
+    <div style={{ backgroundColor: "#202634", minHeight: "100vh"}}>
+      <Container >
+        <Header />
+        {currentUser ? (
+          <>
+            <Profile />
+          </>
+        ) : (
+          <Login />
+        )}
+      </Container>
     </div>
   );
 }
