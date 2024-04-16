@@ -11,7 +11,7 @@ function Login() {
   
 
   return (
-    <Container style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '50vh' }}>
+    <Container style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '40vh' }}>
       {showLogin ? (
         <>
           <LoginForm />

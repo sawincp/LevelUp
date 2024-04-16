@@ -92,7 +92,7 @@ function SignupForm() {
               </InputGroup>
             </Form.Group>
           </Row>
-          <Button type="submit">Sign Up!</Button>
+          <Button type="submit" style={{marginBottom: '75px'}}>Sign Up!</Button>
         </Form>
       </Container>
     </>

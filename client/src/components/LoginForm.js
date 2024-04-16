@@ -93,7 +93,7 @@ function LoginForm() {
               </InputGroup>
             </Form.Group>
           </Row>
-          <Button type="submit">Log In!</Button>
+          <Button type="submit" style={{marginBottom: '75px'}}>Log In!</Button>
         </Form>
       </Container>
     </>
