@@ -6,7 +6,9 @@ import { userState } from "./state/atoms/UserState";
 
 import Header from "./components/Header";
 import Login from "./components/Login";
+import Nav from "./components/Nav";
 import Profile from "./components/Profile";
+import GameCards from "./components/GameCards";
 
 import Container from "react-bootstrap/esm/Container";
 
@@ -36,9 +38,16 @@ function App() {
   return (
     <Container>
       <Header />
+      <Nav />
       {currentUser ? (
         <>
-          <Profile />
+        <Routes>
+          <Route exact path= '/' element={<Profile />} />
+          <Route exact path= '/games' element={<GameCards />} />
+
+
+        </Routes>
+  
         </>
       ) : (
         <Login />
