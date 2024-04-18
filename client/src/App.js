@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import axios from "axios";
 import { useRecoilState } from "recoil";
@@ -8,14 +8,15 @@ import Header from "./components/Header";
 import Login from "./components/Login";
 import Nav from "./components/Nav";
 import Profile from "./components/Profile";
-import GameCards from "./components/GameCards";
+import GameCard from "./components/GameCard";
 
 import Container from "react-bootstrap/esm/Container";
 
 function App() {
   const [currentUser, setCurrentUser] = useRecoilState(userState);
+  const [games, setGames]= useState([])
 
-  console.log("User:", currentUser);
+  // console.log("User:", currentUser);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -35,6 +36,16 @@ function App() {
     }
   }, []);
 
+  useEffect( () => {
+    axios.get('/games')
+    .then(response =>{
+      setGames(response.data)
+    })
+  },[])
+
+  // console.log(games)
+
+
   return (
     <Container>
       <Header />
@@ -43,7 +54,7 @@ function App() {
         <>
         <Routes>
           <Route exact path= '/' element={<Profile />} />
-          <Route exact path= '/games' element={<GameCards />} />
+          <Route exact path= '/games' element={<GameCard games={games} />} />
         </Routes>
   
         </>
