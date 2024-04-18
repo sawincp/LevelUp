@@ -44,8 +44,6 @@ function App() {
         <Routes>
           <Route exact path= '/' element={<Profile />} />
           <Route exact path= '/games' element={<GameCards />} />
-
-
         </Routes>
   
         </>
