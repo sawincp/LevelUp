@@ -14,7 +14,7 @@ import Container from "react-bootstrap/esm/Container";
 
 function App() {
   const [currentUser, setCurrentUser] = useRecoilState(userState);
-  const [games, setGames]= useState([])
+  const [games, setGames] = useState([]);
 
   // console.log("User:", currentUser);
 
@@ -36,15 +36,13 @@ function App() {
     }
   }, []);
 
-  useEffect( () => {
-    axios.get('/games')
-    .then(response =>{
-      setGames(response.data)
-    })
-  },[])
+  useEffect(() => {
+    axios.get("/games").then((response) => {
+      setGames(response.data);
+    });
+  }, []);
 
   // console.log(games)
-
 
   return (
     <Container>
@@ -52,11 +50,10 @@ function App() {
       <Nav />
       {currentUser ? (
         <>
-        <Routes>
-          <Route exact path= '/' element={<Profile />} />
-          <Route exact path= '/games' element={<GameCard games={games} />} />
-        </Routes>
-  
+          <Routes>
+            <Route exact path="/" element={<Profile />} />
+            <Route exact path="/games" element={<GameCard games={games} />} />
+          </Routes>
         </>
       ) : (
         <Login />

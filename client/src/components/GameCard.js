@@ -34,7 +34,7 @@ const GameCard = ({ games }) => {
             style={{ transform, opacity }}
           >
             <Card>
-              <Card.Body>
+              <Card.Body className="card-body-centered">
                 {flipped[index] ? (
                   // Content for the back of the card
                   <div>
@@ -46,12 +46,6 @@ const GameCard = ({ games }) => {
                     <Card.Img
                       variant="top"
                       src={game.cover_art}
-                      className="img-thumbnail"
-                      style={{
-                        width: "500px",
-                        height: "600px",
-                        objectFit: "cover",
-                      }}
                     />
 
                     <Card.Title>{game.title}</Card.Title>
