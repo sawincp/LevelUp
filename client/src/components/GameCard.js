@@ -3,14 +3,17 @@ import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
 import { useSpring, animated } from "@react-spring/web";
+import YouTube from "react-youtube";
 
 const GameCard = ({ games }) => {
-  // console.log(games)
+  console.log(games);
 
-  const [flipped, setFlipped] = useState(false);
+  const [flipped, setFlipped] = useState(Array(games.length).fill(false)); // Array of booleans to track card flip state
 
   const handleClick = (gameId) => {
-    setFlipped((prevState) => !prevState); // Toggle flipped state on click
+    const newFlipped = [...flipped]; // Create a copy to avoid mutation
+    newFlipped[gameId] = !newFlipped[gameId]; // Toggle flipped state for clicked card
+    setFlipped(newFlipped);
   };
 
   const { transform, opacity } = useSpring({
@@ -24,18 +27,18 @@ const GameCard = ({ games }) => {
 
   return (
     <Row xs={1} md={2} className="g-4">
-      {games.map((game) => (
+      {games.map((game, index) => (
         <Col key={game.id}>
           <animated.div
-            onClick={() => handleClick(game.id)}
+            onClick={() => handleClick(index)}
             style={{ transform, opacity }}
           >
             <Card>
               <Card.Body>
-                {flipped ? (
+                {flipped[index] ? (
                   // Content for the back of the card
                   <div>
-                    <h2>Back of {game.title}</h2>
+                    <YouTube videoId={game.youtubeId} />
                     <li>{game.comment}</li>
                   </div>
                 ) : (
