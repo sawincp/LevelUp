@@ -6,7 +6,6 @@ import { userState } from "./state/atoms/UserState";
 
 import Header from "./components/Header";
 import Login from "./components/Login";
-import Nav from "./components/Nav";
 import Profile from "./components/Profile";
 import GameCard from "./components/GameCard";
 
@@ -47,7 +46,6 @@ function App() {
   return (
     <Container>
       <Header />
-      <Nav />
       {currentUser ? (
         <>
           <Routes>
