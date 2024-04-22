@@ -42,14 +42,13 @@ function Header() {
         <Col md={2}>
           <img src={Logo} alt="Logo" style={{ maxWidth: "100%" }}></img>
           <Nav />
+          {user ? (
+            <>
+              <h2 style={{ marginBottom: "20px" }}>{user.username}</h2>
+              <Button onClick={handleLogOut}>Log Out</Button>
+            </>
+          ) : null}
         </Col>
-        {user ? (
-          <Col md={{ span: 5, offset: 5 }} className="text-center">
-            <h1>Welcome Back</h1>
-            <h2 style={{marginBottom: '20px'}}>{user.username}</h2>
-            <Button onClick={handleLogOut}>Log Out</Button>
-          </Col>
-        ) : null}
       </Row>
     </Container>
   );
