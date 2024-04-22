@@ -1,8 +1,9 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { userState } from "../state/atoms/UserState";
+
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/esm/Row";
@@ -14,6 +15,9 @@ import Nav from "./Nav";
 function Header() {
   const [currentUser, setCurrentUser] = useRecoilState(userState);
   const [error, setError] = useState("");
+  const user = useRecoilValue(userState);
+
+  // console.log("User:", user);
 
   const handleLogOut = async () => {
     try {
@@ -35,11 +39,17 @@ function Header() {
   return (
     <Container>
       <Row className="align-items-center my-5">
-        <Col sm={2}>
+        <Col md={2}>
           <img src={Logo} alt="Logo" style={{ maxWidth: "100%" }}></img>
           <Nav />
-          <Button onClick={handleLogOut}>Log Out</Button>
         </Col>
+        {user ? (
+          <Col md={{ span: 5, offset: 5 }} className="text-center">
+            <h1>Welcome Back</h1>
+            <h2 style={{marginBottom: '20px'}}>{user.username}</h2>
+            <Button onClick={handleLogOut}>Log Out</Button>
+          </Col>
+        ) : null}
       </Row>
     </Container>
   );
