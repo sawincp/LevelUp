@@ -24,7 +24,7 @@ const GameCard = ({ games }) => {
       <h1>Game Library</h1>
       <Row className="game-card-container">
         {games.map((game, index) => (
-          <Col className= 'col' lg={4}>
+          <Col className="col" lg={4}>
             <div className="game-card"></div>
             <div
               className={`card-inner ${flipped[index] ? "flipped" : ""}`}
@@ -33,11 +33,11 @@ const GameCard = ({ games }) => {
               <div className="card-front">
                 <Card>
                   <Card.Body className="card-body-centered">
-                    <Card.Img className="card-img-top" variant="top" src={game.cover_art} />
-                    <Card.Title>{game.title}</Card.Title>
-                    <Card.Text style={{ color: "black" }}>
-                      Release Date: {game.release_date}
-                    </Card.Text>
+                    <Card.Img
+                      className="card-img-top"
+                      variant="top"
+                      src={game.cover_art}
+                    />
                   </Card.Body>
                 </Card>
               </div>
@@ -51,6 +51,9 @@ const GameCard = ({ games }) => {
                         opts={opts}
                       />
                     </div>
+                    <Card.Text style={{ color: "black" }}>
+                      Release Date: {game.release_date}
+                    </Card.Text>
                   </Card.Body>
                 </Card>
               </div>

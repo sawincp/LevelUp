@@ -1,8 +1,31 @@
 
 puts "🌱 Seeding..."
 
+# Seed users
+users = [
+  { username: "user1", 
+    password_digest: BCrypt::Password.create("password1") 
+  }, #1
+  
+  { 
+    username: "user2", 
+    password_digest: BCrypt::Password.create("password2") 
+  }, #2
+
+  { 
+    username: "user3", 
+    password_digest: BCrypt::Password.create("password3") 
+  }, #3
+
+  { 
+    username: "user4", 
+    password_digest: BCrypt::Password.create("password4") 
+  }, #4
+
+]
+User.create(users)
+
 consoles = [
-#   { platform: "Choose Console" },  # 1. Default option
   
   { name: "PlayStation 5",
     logo: "https://en.wikipedia.org/wiki/PlayStation_5#/media/File:PlayStation_5_logo_and_wordmark.svg",
@@ -32,38 +55,14 @@ Console.create(consoles)
 
 # Seed genres with a default placeholder option
 genres = [
-#   { genre_type: "Choose Genre" },  #1 Default option
-  { genre_type: "Action" },        #2
-  { genre_type: "Adventure" },     #3
-  { genre_type: "Role-Playing" },  #4
-  { genre_type: "Side Scroller "},  #5
-  { genre_type: "First-Person Shooter"}  #6
+  { genre_type: "Action" },        #1
+  { genre_type: "Adventure" },     #2
+  { genre_type: "Role-Playing" },  #3
+  { genre_type: "Side Scroller "},  #4
+  { genre_type: "First-Person Shooter"}  #5
 ]
 Genre.create(genres)
   
-  # Seed users
-  users = [
-    { username: "user1", 
-      password_digest: BCrypt::Password.create("password1") 
-    }, #1
-    
-    { 
-      username: "user2", 
-      password_digest: BCrypt::Password.create("password2") 
-    }, #2
-
-    { 
-      username: "user3", 
-      password_digest: BCrypt::Password.create("password3") 
-    }, #3
-
-    { 
-      username: "user4", 
-      password_digest: BCrypt::Password.create("password4") 
-    }, #4
-
-  ]
-  User.create(users)
   
   # Seed games (referencing existing consoles, genres, and users)
   games = [
@@ -74,7 +73,7 @@ Genre.create(genres)
       youtubeId: "pYqyVpCV-3c",
       user_id: 1, 
       console_id: 2, 
-      genre_id: 4 
+      genre_id: 3 
     },
     
       { title: "GOD OF WAR RAGNAROK", 
@@ -84,7 +83,7 @@ Genre.create(genres)
         youtubeId: "dIQGI36BxDE",
         user_id: 2, 
         console_id: 1, 
-        genre_id: 3 
+        genre_id: 1
       },
     
       { title: "THE LEGEND OF ZELDA: BREATH OF THE WILD", 
@@ -101,10 +100,10 @@ Genre.create(genres)
         cover_art: "https://upload.wikimedia.org/wikipedia/en/thumb/3/32/Super_Mario_World_Coverart.png/220px-Super_Mario_World_Coverart.png", 
         release_date: Date.new(1991, 8, 23), 
         comment: "Still the best Mario game out there", 
-        youtubeId: "88JL-WM_kV0",
+        youtubeId: "RJ1w-venSAE",
         user_id: 3, 
         console_id: 4, 
-        genre_id: 5
+        genre_id: 4
       },
 
       { title: "HALO: COMBAT EVOLVED", 
@@ -114,7 +113,7 @@ Genre.create(genres)
         youtubeId: "v0kHiEME0Vk",
         user_id: 4, 
         console_id: 5, 
-        genre_id: 6
+        genre_id: 5
       },
 
 
@@ -125,7 +124,7 @@ Genre.create(genres)
         youtubeId: "pF7p9hruSeY",
         user_id: 2, 
         console_id: 6, 
-        genre_id: 3
+        genre_id: 2
       },
 
 
