@@ -6,12 +6,8 @@ import Col from "react-bootstrap/esm/Col";
 import YouTube from "react-youtube";
 
 const GameCard = ({ games }) => {
+  console.log(games);
   const [flipped, setFlipped] = useState(Array(games.length).fill(false));
-
-  const opts = {
-    height: "200",
-    width: "375",
-  };
 
   const handleClick = (gameId) => {
     const newFlipped = [...flipped];
@@ -19,12 +15,18 @@ const GameCard = ({ games }) => {
     setFlipped(newFlipped);
   };
 
+  const opts = {
+    height: "125",
+    width: "250",
+  };
+
+
   return (
     <Container>
       <h1>Game Library</h1>
       <Row className="game-card-container">
         {games.map((game, index) => (
-          <Col className="col" lg={4}>
+          <Col key={game.id} className="col" lg={4}>
             <div className="game-card"></div>
             <div
               className={`card-inner ${flipped[index] ? "flipped" : ""}`}
@@ -51,9 +53,14 @@ const GameCard = ({ games }) => {
                         opts={opts}
                       />
                     </div>
-                    <Card.Text style={{ color: "black" }}>
+                    <Card.Text className="card-text">
                       Release Date: {game.release_date}
                     </Card.Text>
+                    <Card.Text className="card-text">
+                      Genre: {game.genre.genre_type}
+                    </Card.Text>
+                    <Card.Text className="card-text">Available On: {game.console.name}</Card.Text>
+                    <Card.Img src={game.console.logo}/>
                   </Card.Body>
                 </Card>
               </div>

@@ -28,19 +28,19 @@ User.create(users)
 consoles = [
   
   { name: "PlayStation 5",
-    logo: "https://en.wikipedia.org/wiki/PlayStation_5#/media/File:PlayStation_5_logo_and_wordmark.svg",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/PlayStation_5_logo_and_wordmark.svg/512px-PlayStation_5_logo_and_wordmark.svg.png",
   },  #1
   
   { name: "Xbox Series X",
-    logo: "https://en.wikipedia.org/wiki/Xbox_Series_X_and_Series_S#/media/File:Xbox_Series_X_logo.svg" 
+    logo: "https://en.m.wikipedia.org/wiki/Xbox_Series_X_and_Series_S#/media/File:Xbox_Series_S.png" 
   }, #2
   
   { name: "Nintendo Switch",
-    logo: "https://en.wikipedia.org/wiki/Nintendo_Switch#/media/File:Nintendo_Switch_logo.svg"
+    logo: "https://upload.wikimedia.org/wikipedia/commons/0/04/Nintendo_Switch_logo%2C_square.png"
   }, #3
   
   { name: "Super Nintendo",
-    logo: "https://en.wikipedia.org/wiki/Super_Nintendo_Entertainment_System#/media/File:Super_Nintendo_Entertainment_System_logo.svg"
+    logo: "https://upload.wikimedia.org/wikipedia/commons/c/c4/Super_Nintendo_PAL_logo.png"
 }, #4
   
   { name: "Xbox",

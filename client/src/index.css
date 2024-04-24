@@ -18,6 +18,10 @@ p, h1, h2 {
   color: #F5F8F7
 }
 
+.card-text {
+  color: black;
+}
+
 .game-card {
   perspective: 1000px;
 }
