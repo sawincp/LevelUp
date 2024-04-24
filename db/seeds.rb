@@ -6,27 +6,27 @@ consoles = [
   
   { name: "PlayStation 5",
     logo: "https://en.wikipedia.org/wiki/PlayStation_5#/media/File:PlayStation_5_logo_and_wordmark.svg",
-  },  #2
+  },  #1
   
   { name: "Xbox Series X",
     logo: "https://en.wikipedia.org/wiki/Xbox_Series_X_and_Series_S#/media/File:Xbox_Series_X_logo.svg" 
-  }, #3
+  }, #2
   
   { name: "Nintendo Switch",
     logo: "https://en.wikipedia.org/wiki/Nintendo_Switch#/media/File:Nintendo_Switch_logo.svg"
-  }, #4
+  }, #3
   
   { name: "Super Nintendo",
     logo: "https://en.wikipedia.org/wiki/Super_Nintendo_Entertainment_System#/media/File:Super_Nintendo_Entertainment_System_logo.svg"
-}, #5
+}, #4
   
   { name: "Xbox",
     logo: "https://en.wikipedia.org/wiki/Xbox#/media/File:Xbox_logo_(2019).svg"
-  }, #6
+  }, #5
   
   { name: "N64",
     logo: "https://en.wikipedia.org/wiki/Nintendo_64#/media/File:Nintendo_64_Logo.svg"
-  } #7
+  } #6
 ]
 Console.create(consoles)
 
@@ -73,7 +73,7 @@ Genre.create(genres)
       comment: "Souls-like action RPG", 
       youtubeId: "pYqyVpCV-3c",
       user_id: 1, 
-      console_id: 3, 
+      console_id: 2, 
       genre_id: 4 
     },
     
@@ -83,7 +83,7 @@ Genre.create(genres)
         comment: "Action-adventure sequel", 
         youtubeId: "dIQGI36BxDE",
         user_id: 2, 
-        console_id: 2, 
+        console_id: 1, 
         genre_id: 3 
       },
     
@@ -93,7 +93,7 @@ Genre.create(genres)
         comment: "Game of the year, no questions asked", 
         youtubeId: "Z6BeAtdoELY",
         user_id: 1, 
-        console_id: 4, 
+        console_id: 3, 
         genre_id: 3 
       }, 
 
@@ -103,7 +103,7 @@ Genre.create(genres)
         comment: "Still the best Mario game out there", 
         youtubeId: "88JL-WM_kV0",
         user_id: 3, 
-        console_id: 5, 
+        console_id: 4, 
         genre_id: 5
       },
 
@@ -113,7 +113,7 @@ Genre.create(genres)
         comment: "Started my love for shooter games!", 
         youtubeId: "v0kHiEME0Vk",
         user_id: 4, 
-        console_id: 6, 
+        console_id: 5, 
         genre_id: 6
       },
 
@@ -124,7 +124,7 @@ Genre.create(genres)
         comment: "The original and best Zelda game!", 
         youtubeId: "pF7p9hruSeY",
         user_id: 2, 
-        console_id: 7, 
+        console_id: 6, 
         genre_id: 3
       },
 
