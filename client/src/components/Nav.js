@@ -19,21 +19,21 @@ function Nav() {
           <Row>
             <NavBar.Brand>
               <NavLink to="/">
-                <Image src={User} style={imageStyle} />
+                <Image className= 'hover-img' src={User} style={imageStyle} />
               </NavLink>
             </NavBar.Brand>
           </Row>
           <Row>
             <NavBar.Brand>
               <NavLink to="/games">
-                <Image src={Play} style={imageStyle} />
+                <Image className= 'hover-img' src={Play} style={imageStyle} />
               </NavLink>
             </NavBar.Brand>
           </Row>
           <Row>
             <NavBar.Brand>
               <NavLink to="/consoles">
-                <Image src={Tv} style={imageStyle} />
+                <Image className= 'hover-img' src={Tv} style={imageStyle} />
               </NavLink>
             </NavBar.Brand>
           </Row>

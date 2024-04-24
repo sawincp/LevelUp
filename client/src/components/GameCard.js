@@ -19,8 +19,6 @@ const GameCard = ({ games }) => {
     setFlipped(newFlipped);
   };
 
-  console.log("Games:", games);
-
   return (
     <Container>
       <h1>Game Library</h1>
@@ -43,7 +41,6 @@ const GameCard = ({ games }) => {
                   </Card.Body>
                 </Card>
               </div>
-
               <div className="card-back">
                 <Card>
                   <Card.Body className="card-body-centered">

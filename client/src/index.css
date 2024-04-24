@@ -73,3 +73,14 @@ p, h1, h2 {
   width: 100%;
   height: 100%;
 }
+
+.hover-img {
+  opacity: 0.7;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.hover-img:hover {
+  opacity: 1;
+  background-color: #F5D75C;
+}
+
