@@ -32,7 +32,7 @@ consoles = [
   },  #1
   
   { name: "Xbox Series X",
-    logo: "https://en.m.wikipedia.org/wiki/Xbox_Series_X_and_Series_S#/media/File:Xbox_Series_S.png" 
+    logo: "https://upload.wikimedia.org/wikipedia/commons/7/72/Xbox_Series_X_logo.png" 
   }, #2
   
   { name: "Nintendo Switch",
@@ -48,7 +48,7 @@ consoles = [
   }, #5
   
   { name: "N64",
-    logo: "https://en.wikipedia.org/wiki/Nintendo_64#/media/File:Nintendo_64_Logo.svg"
+    logo: "https://upload.wikimedia.org/wikipedia/commons/f/f6/Nintendo_64_logo.png"
   } #6
 ]
 Console.create(consoles)

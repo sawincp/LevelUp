@@ -16,8 +16,8 @@ const GameCard = ({ games }) => {
   };
 
   const opts = {
-    height: "125",
-    width: "250",
+    height: "200",
+    width: "375",
   };
 
 
@@ -59,7 +59,7 @@ const GameCard = ({ games }) => {
                     <Card.Text className="card-text">
                       Genre: {game.genre.genre_type}
                     </Card.Text>
-                    <Card.Text className="card-text">Available On: {game.console.name}</Card.Text>
+                    <Card.Text className="card-text">Available On:</Card.Text>
                     <Card.Img src={game.console.logo}/>
                   </Card.Body>
                 </Card>
