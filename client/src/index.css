@@ -88,3 +88,11 @@ p, h1, h2 {
   background-color: #F5D75C;
 }
 
+.search-form {
+  padding-bottom:20px ;
+}
+
+.game-library-header {
+  text-align: center;
+  padding-bottom: 30px;
+}

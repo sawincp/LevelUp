@@ -5,7 +5,9 @@ import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
 import YouTube from "react-youtube";
 
-const GameCard = ({ games }) => {
+import Search from "./Search";
+
+const GameCard = ({ games, searchTerm, onSearchChange }) => {
   console.log(games);
   const [flipped, setFlipped] = useState(Array(games.length).fill(false));
 
@@ -23,7 +25,8 @@ const GameCard = ({ games }) => {
 
   return (
     <Container>
-      <h1>Game Library</h1>
+      <h1 className="game-library-header">Game Library</h1>
+      <Search searchTerm={searchTerm} onSearchChange={onSearchChange} />
       <Row className="game-card-container">
         {games.map((game, index) => (
           <Col key={game.id} className="col" lg={4}>

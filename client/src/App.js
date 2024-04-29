@@ -14,6 +14,7 @@ import Container from "react-bootstrap/esm/Container";
 function App() {
   const [currentUser, setCurrentUser] = useRecoilState(userState);
   const [games, setGames] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   // console.log("User:", currentUser);
 
@@ -41,6 +42,10 @@ function App() {
     });
   }, []);
 
+  const displayGames = games.filter((game) =>
+  game.title.toLowerCase().includes(searchTerm.toLowerCase())
+);
+
   // console.log(games)
 
   return (
@@ -50,7 +55,7 @@ function App() {
         <>
           <Routes>
             <Route exact path="/" element={<Profile />} />
-            <Route exact path="/games" element={<GameCard games={games} />} />
+            <Route exact path="/games" element={<GameCard games={displayGames} searchTerm={searchTerm} onSearchChange={setSearchTerm} />} />
           </Routes>
         </>
       ) : (
