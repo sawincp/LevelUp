@@ -1,54 +1,121 @@
-import React from 'react'
-import Button from 'react-bootstrap/Button';
-import Col from 'react-bootstrap/esm/Col';
-import Container from 'react-bootstrap/esm/Container';
-import Row from 'react-bootstrap/esm/Row';
-import Modal from 'react-bootstrap/Modal';
+import React, { useState } from "react";
+import Container from "react-bootstrap/esm/Container";
+import Col from "react-bootstrap/esm/Col";
+import Row from "react-bootstrap/esm/Row";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
 
 function NewGame(props) {
-    return (
-        <Modal
-          {...props}
-          size="lg"
-          aria-labelledby="contained-modal-title-vcenter"
-          centered
-        >
-         <Modal.Header closeButton>
+  const [game, setGame] = useState({
+    title: "",
+    cover_art: "",
+    release_date: "",
+    genre_id: "",
+    comment: "",
+    youtubeId: "",
+    console_id: "",
+  });
+
+  const [error, setError] = useState("");
+
+  const handleInputChange = (e) => {
+    setGame({ ...game, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
+  return (
+    <Modal
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
           Add your Game!
         </Modal.Title>
       </Modal.Header>
-      <Modal.Body className="grid-example">
+      <Modal.Body className="new-game">
         <Container>
-          <Row>
-            <Col xs={12} md={8}>
-              Title:
+          <Form>
+            <Col>
+              <Form.Group>
+                <Row>
+                  <InputGroup>
+                    <Form.Control
+                      type="text"
+                      placeholder="Game Title"
+                      name="title"
+                      onChange={handleInputChange}
+                    />
+                    Release Date:
+                    <Form.Control
+                      type="date"
+                      placeholder="Release Date"
+                      name="release_date"
+                      onChange={handleInputChange}
+                    />
+                  </InputGroup>
+                </Row>
+                <Row>
+                  <InputGroup>
+                    <Form.Control
+                      type="test"
+                      placeholder="Console"
+                      name="console_id"
+                      onChange={handleInputChange}
+                    />
+                    <Form.Control
+                      type="test"
+                      placeholder="Genre"
+                      name="genre_id"
+                      onChange={handleInputChange}
+                    />
+                  </InputGroup>
+                </Row>
+                <Row>
+                  <InputGroup>
+                    <Form.Control
+                      type="text"
+                      placeholder="Cover Art Link"
+                      name="cover_art"
+                      onChange={handleInputChange}
+                    />
+                  </InputGroup>
+                </Row>
+                <InputGroup>
+                  <Form.Control
+                    type="text"
+                    placeholder="YouTube Link"
+                    name="youtuveId"
+                    onChange={handleInputChange}
+                  />
+                </InputGroup>
+                <Row>
+                  <InputGroup>
+                    <Form.Control
+                      type="text"
+                      placeholder="comment"
+                      name="comment"
+                      onChange={handleInputChange}
+                    />
+                  </InputGroup>
+                </Row>
+              </Form.Group>
             </Col>
-            <Col xs={6} md={4}>
-              Cover Art Link:
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={6} md={4}>
-              Release Date:
-            </Col>
-            <Col xs={6} md={4}>
-              Genre:
-            </Col>
-            <Col xs={6} md={4}>
-             Comment:
-            </Col>
-            <Col xs={6} md={4}>
-             YouTube Link:
-            </Col>
-          </Row>
+          </Form>
         </Container>
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={props.onHide}>Close</Button>
       </Modal.Footer>
-        </Modal>
-      );
-    }    
+    </Modal>
+  );
+}
 
-export default NewGame
+export default NewGame;
