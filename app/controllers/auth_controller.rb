@@ -8,8 +8,7 @@ class AuthController < ApplicationController
           token = encode_token(payload)
           render json: {user: user, jwt: token, success: "Welcome back, #{user.username}"}
       else
-          render json: {error: "Log in failed! Username or password invalid!"}
-      end
+        render json: { errors: ["Invalid username or password"] }, status: :unauthorized      end
     end
   
     def auto_login
