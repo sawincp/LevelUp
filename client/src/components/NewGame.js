@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import axios from "axios"
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Container from "react-bootstrap/esm/Container";
 import Col from "react-bootstrap/esm/Col";
 import Row from "react-bootstrap/esm/Row";
@@ -8,8 +8,13 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 
+import Dropdown from "react-bootstrap/Dropdown";
+import DropdownButton from "react-bootstrap/DropdownButton";
+
+import OverLayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
+
 function NewGame(props) {
-  // console.log(props)
   const [game, setGame] = useState({
     title: "",
     cover_art: "",
@@ -20,7 +25,17 @@ function NewGame(props) {
     console_id: "",
   });
 
+  const [consoles, setConsoles] = useState([]);
+
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    axios.get("/consoles").then((response) => {
+      setConsoles(response.data);
+    });
+  }, []);
+
+  console.log("Consoles:", consoles);
 
   const handleInputChange = (e) => {
     setGame({ ...game, [e.target.name]: e.target.value });
@@ -28,25 +43,24 @@ function NewGame(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const token = localStorage.getItem("token")
+    const token = localStorage.getItem("token");
 
-    try{
-      const response = await axios.post('/games', game, {
-        headers:{
-          Authorization: `Bearer ${token}` 
-        }
-      })
-      if(!response.data){
-        throw new Error("Game creation failed")
+    try {
+      const response = await axios.post("/games", game, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      if (!response.data) {
+        throw new Error("Game creation failed");
       }
-      const createdGame = response.data
-      props.onAddNewGame(createdGame)
-      props.onHide(createdGame)
-      setError('')
-    }catch(error) {
-      setError(error.message)
+      const createdGame = response.data;
+      props.onAddNewGame(createdGame);
+      props.onHide(createdGame);
+      setError("");
+    } catch (error) {
+      setError(error.message);
     }
-
   };
 
   return (
@@ -74,30 +88,35 @@ function NewGame(props) {
                       name="title"
                       onChange={handleInputChange}
                     />
-                    Release Date:
-                    <Form.Control
-                      type="date"
-                      placeholder="Release Date"
-                      name="release_date"
-                      onChange={handleInputChange}
-                    />
+
+                    <OverLayTrigger
+                      placement="top"
+                      overlay={<Tooltip id="date-tooltip">Relase Date</Tooltip>}
+                    >
+                      <Form.Control
+                        type="date"
+                        name="release_date"
+                        onChange={handleInputChange}
+                      />
+                    </OverLayTrigger>
                   </InputGroup>
                 </Row>
                 <Row>
-                  <InputGroup>
-                    <Form.Control
-                      type="test"
-                      placeholder="Console"
-                      name="console_id"
-                      onChange={handleInputChange}
-                    />
-                    <Form.Control
-                      type="test"
-                      placeholder="Genre"
-                      name="genre_id"
-                      onChange={handleInputChange}
-                    />
-                  </InputGroup>
+                  <Col>
+                    <h3>Console:</h3>
+                    {consoles.map((console) => (
+                      <Form.Check
+                        key={console.id}
+                        type="checkbox"
+                        id={console.id}
+                        label={console.name}
+                        value={console.id} // Set value to console ID
+                      />
+                    ))}
+                  </Col>
+                  <Col>
+                    <h3>Genre:</h3>
+                  </Col>
                 </Row>
                 <Row>
                   <InputGroup>
@@ -113,7 +132,7 @@ function NewGame(props) {
                   <Form.Control
                     type="text"
                     placeholder="YouTube Link"
-                    name="youtuveId"
+                    name="youtubeId"
                     onChange={handleInputChange}
                   />
                 </InputGroup>
@@ -121,7 +140,7 @@ function NewGame(props) {
                   <InputGroup>
                     <Form.Control
                       type="text"
-                      placeholder="comment"
+                      placeholder="Add Comment"
                       name="comment"
                       onChange={handleInputChange}
                     />

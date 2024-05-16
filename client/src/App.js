@@ -14,6 +14,7 @@ import Container from "react-bootstrap/esm/Container";
 function App() {
   const [currentUser, setCurrentUser] = useRecoilState(userState);
   const [games, setGames] = useState([]);
+  const [consoles, setConsoles]= useState([])
   const [searchTerm, setSearchTerm] = useState("");
 
 
@@ -40,6 +41,14 @@ function App() {
       setGames(response.data);
     });
   }, []);
+
+  // useEffect(()=>{
+  //   axios.get("/consoles").then((response)=>{
+  //     setConsoles(response.data)
+  //   })
+  // },[])
+
+  // console.log("Consoles:", consoles)
 
   const displayGames = games.filter((game) =>
   game.title.toLowerCase().includes(searchTerm.toLowerCase())
