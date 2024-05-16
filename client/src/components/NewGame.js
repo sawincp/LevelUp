@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios"
 import Container from "react-bootstrap/esm/Container";
 import Col from "react-bootstrap/esm/Col";
 import Row from "react-bootstrap/esm/Row";
@@ -8,6 +9,7 @@ import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 
 function NewGame(props) {
+  // console.log(props)
   const [game, setGame] = useState({
     title: "",
     cover_art: "",
@@ -24,8 +26,27 @@ function NewGame(props) {
     setGame({ ...game, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const token = localStorage.getItem("token")
+
+    try{
+      const response = await axios.post('/games', game, {
+        headers:{
+          Authorization: `Bearer ${token}` 
+        }
+      })
+      if(!response.data){
+        throw new Error("Game creation failed")
+      }
+      const createdGame = response.data
+      props.onAddNewGame(createdGame)
+      props.onHide(createdGame)
+      setError('')
+    }catch(error) {
+      setError(error.message)
+    }
+
   };
 
   return (
@@ -37,7 +58,7 @@ function NewGame(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Add your Game!
+          Add New Game!
         </Modal.Title>
       </Modal.Header>
       <Modal.Body className="new-game">
@@ -112,7 +133,7 @@ function NewGame(props) {
         </Container>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={props.onHide}>Close</Button>
+        <Button onClick={handleSubmit}>Save Game</Button>
       </Modal.Footer>
     </Modal>
   );

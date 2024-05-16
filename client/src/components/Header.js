@@ -3,6 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { userState } from "../state/atoms/UserState";
+import { useNavigate } from "react-router-dom";
 
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/esm/Container";
@@ -17,6 +18,8 @@ function Header() {
   const [error, setError] = useState("");
   const user = useRecoilValue(userState);
 
+  const navigate = useNavigate()
+
   // console.log("User:", user);
 
   const handleLogOut = async () => {
@@ -29,6 +32,7 @@ function Header() {
         },
       });
       setCurrentUser(null);
+      navigate('/')
     } catch (error) {
       const errorMessage = error.response.data.errors[0];
       console.error("Error:", errorMessage);

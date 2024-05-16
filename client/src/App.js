@@ -16,7 +16,6 @@ function App() {
   const [games, setGames] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
-  // console.log("User:", currentUser);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -46,7 +45,10 @@ function App() {
   game.title.toLowerCase().includes(searchTerm.toLowerCase())
 );
 
-  // console.log(games)
+const handleAddGame = (newGame)=>{
+  setGames((prevGames)=> [...prevGames, newGame])
+}
+
 
   return (
     <Container>
@@ -55,7 +57,7 @@ function App() {
         <>
           <Routes>
             <Route exact path="/" element={<Profile />} />
-            <Route exact path="/games" element={<GameCard games={displayGames} searchTerm={searchTerm} onSearchChange={setSearchTerm} />} />
+            <Route exact path="/games" element={<GameCard games={displayGames} searchTerm={searchTerm} onSearchChange={setSearchTerm} onAddNewGame={handleAddGame} />} />
           </Routes>
         </>
       ) : (

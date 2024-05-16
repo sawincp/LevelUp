@@ -8,7 +8,7 @@ import Col from "react-bootstrap/esm/Col";
 
 import NewGame from "./NewGame";
 
-function Search({ searchTerm, onSearchChange }) {
+function Search({ games, searchTerm, onSearchChange, onAddNewGame }) {
   const [modalShow, setModalShow] = useState(false);
 
   const handleChange = (e) => {
@@ -35,7 +35,8 @@ function Search({ searchTerm, onSearchChange }) {
           </Col>
         </Row>
       </Form>
-      <NewGame show={modalShow} onHide={() => setModalShow(false)} />
+      
+      <NewGame games={games} onAddNewGame={onAddNewGame} show={modalShow} onHide={() => setModalShow(false)} />
     </Container>
   );
 }

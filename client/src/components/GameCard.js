@@ -7,8 +7,8 @@ import YouTube from "react-youtube";
 
 import Search from "./Search";
 
-const GameCard = ({ games, searchTerm, onSearchChange }) => {
-  console.log(games);
+const GameCard = ({ games, searchTerm, onSearchChange, onAddNewGame }) => {
+    
   const [flipped, setFlipped] = useState(Array(games.length).fill(false));
 
   const handleClick = (gameId) => {
@@ -26,7 +26,9 @@ const GameCard = ({ games, searchTerm, onSearchChange }) => {
   return (
     <Container>
       <h1 className="game-library-header">Game Library</h1>
-      <Search searchTerm={searchTerm} onSearchChange={onSearchChange} />
+      
+      <Search games={games} searchTerm={searchTerm} onSearchChange={onSearchChange} onAddNewGame={onAddNewGame} />
+      
       <Row className="game-card-container">
         {games.map((game, index) => (
           <Col key={game.id} className="col" lg={4}>
